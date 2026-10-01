@@ -283,4 +283,4 @@ Copilot Studio, n8n, Power Automate. Rápidos para casos simples e equipas de ne
 
 ---
 
-**Próxima parte:** Governança e segurança em enterprise.
+**Próxima parte:** [Governança e segurança em enterprise](03-governanca-e-seguranca.md).
