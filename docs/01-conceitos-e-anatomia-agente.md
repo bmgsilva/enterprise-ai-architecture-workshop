@@ -95,6 +95,22 @@ Tudo o que se quer poder mudar **sem tocar no código**. Declarativo, legível, 
 | **Comportamento do ciclo** | Máximo de iterações, timeouts, estratégia em caso de falha |
 | **Metadados** | Nome, versão, descrição do agente |
 
+### Parâmetro: temperatura
+
+Controla o grau de aleatoriedade com que o modelo escolhe cada palavra. **Baixa** → escolhe quase sempre a palavra mais provável (consistente, previsível). **Alta** → dá hipóteses a palavras menos prováveis (variado, criativo, mais propenso a erros).
+
+| Temperatura | Comportamento | Uso típico em enterprise |
+|---|---|---|
+| 0 – 0,3 | Determinístico, consistente | Agentes com tools, extração de dados, classificação, código, compliance |
+| 0,4 – 0,7 | Equilibrado | Redação de emails, resumos, apoio ao cliente |
+| 0,8 – 1,0 | Criativo, variado | Brainstorming, marketing, ideação |
+
+Notas:
+- A escala depende do fornecedor (Anthropic: 0–1; outros podem ir até 2).
+- Temperatura 0 não garante respostas 100% idênticas — a reprodutibilidade garante-se com evals.
+- Em alguns modelos com raciocínio alargado, a temperatura é fixa ou ignorada.
+- **Regra enterprise:** temperatura baixa por defeito; subir só em agentes de trabalho criativo.
+
 Exemplo ilustrativo:
 
 ```yaml
