@@ -7,14 +7,23 @@ Documento de referência vivo sobre arquitetura de sistemas de IA em contexto en
 | # | Parte | Estado |
 |---|---|---|
 | 1 | [Conceitos base e anatomia de um agente](docs/01-conceitos-e-anatomia-agente.md) | ✅ Concluída |
-| 2 | Arquitetura multi-agente | 🔜 Próxima |
-| 3 | Governança e segurança em enterprise | 📝 Planeada |
+| 2 | [Arquitetura multi-agente](docs/02-arquitetura-multi-agente.md) | ✅ Concluída |
+| 3 | Governança e segurança em enterprise | 🔜 Próxima |
 | 4 | Integração com sistemas existentes (Dynamics, ESB, APIs) | 📝 Planeada |
 
 ## Parte 1 — resumo
 
 - **Conceitos base:** agente, workflow vs. agente autónomo, agente orquestrador, MCP server.
 - **Anatomia de um agente:** estrutura do repositório, `config.yaml`, `agent.py`, tools, contexto (RAG, agentic search, MCP), memória, observabilidade e evals, documentação e empacotamento.
+
+## Parte 2 — resumo
+
+- **Quando dividir:** contexto, paralelismo, especialização, fronteiras de segurança; na dúvida, um agente só.
+- **Padrões:** orquestrador-trabalhadores, pipeline, hand-off, avaliador-otimizador, rede.
+- **Comunicação:** mensagens, estado partilhado, artefactos por referência; MCP (vertical) vs A2A (horizontal).
+- **Frameworks e plataformas:** Claude Agent SDK, LangGraph, Microsoft Agent Framework, Microsoft Foundry, Claude Managed Agents.
+
+Os documentos incluem diagramas em Mermaid, desenhados automaticamente pelo GitHub.
 
 ## Versões
 

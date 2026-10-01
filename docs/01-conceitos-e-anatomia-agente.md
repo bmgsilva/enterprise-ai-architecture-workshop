@@ -1,7 +1,7 @@
 # Workshop: Arquitetura AI em Ambiente Enterprise
 
 > Documento de referência vivo. Parte 1 — Conceitos base e anatomia de um agente.
-> Próxima parte: Arquitetura multi-agente.
+> Próxima parte: [Arquitetura multi-agente](02-arquitetura-multi-agente.md).
 
 **Última atualização:** 2026-10-01
 
@@ -157,6 +157,21 @@ Se o config é a identidade, o `agent.py` é o comportamento. Deve ser **genéri
 | **4. Guarda-costas** | Limite de iterações, timeouts, erros devolvidos ao modelo, aprovação humana | Evita loops e ações indevidas |
 | **5. Observabilidade** | Regista chamadas, tools usadas, tokens e tempos | Auditoria e diagnóstico |
 
+```mermaid
+flowchart TD
+    U[Pedido do utilizador] --> M[Modelo<br>prompt + conversa + tools]
+    M --> D{Resposta final<br>ou pedido de tool?}
+    D -- Resposta final --> R[Devolve ao utilizador]
+    D -- Pedido de tool --> G{Ação sensível?}
+    G -- Sim --> H[Aprovação humana]
+    G -- Não --> T[Executa a tool]
+    H --> T
+    T --> O[Resultado ou erro<br>junta-se à conversa]
+    O --> L{Limite de<br>iterações?}
+    L -- Não --> M
+    L -- Sim --> X[Pára e reporta]
+```
+
 Pseudo-código do ciclo:
 
 ```python
@@ -222,6 +237,18 @@ Pergunta que esta camada responde: *como é que o agente sabe coisas que não es
 | **RAG** | Grandes volumes de documentação | Indexação (chunks → embeddings → base vetorial) e consulta (pergunta → pedaços mais parecidos → prompt) | Chunking, pesquisa híbrida, permissões |
 | **Agentic search** | Alternativa ao RAG com modelos de contexto grande | O agente pesquisa iterativamente com uma tool de busca | Menos infraestrutura, mais chamadas |
 | **MCP** | Sistemas vivos (Dynamics, Jira, BD) | Servidor expõe *tools*, *resources* e *prompts* | Construído uma vez, reutilizado por todos os agentes |
+
+```mermaid
+flowchart LR
+    A[Agente] --> S[Contexto estático<br>regras e glossário no prompt]
+    A --> R[RAG<br>pergunta → base vetorial → pedaços relevantes]
+    A --> Q[Agentic search<br>tool de busca iterativa]
+    A --> P[MCP servers<br>Dynamics · Jira · BD]
+    subgraph IDX[Indexação RAG]
+        D[Documentos] --> C[Chunks] --> E[Embeddings] --> V[(Base vetorial)]
+    end
+    R -.-> V
+```
 
 **Pontos críticos do RAG em enterprise:**
 - **Chunking** — cortar mal um documento destrói o significado.
