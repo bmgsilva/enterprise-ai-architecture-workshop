@@ -56,15 +56,15 @@ flowchart LR
 
 ```mermaid
 flowchart TB
-    IN[Conteúdo externo<br>emails · documentos · web] --> L3[3. Guardrails de entrada<br>marcado como não confiável]
-    L3 --> AG[Agente<br>1. identidade própria · menor privilégio<br>2. sandbox · saída de rede por lista branca]
-    AG -->|propõe ação| L4[4. Guardrails nas tools<br>o código determinístico decide]
-    L4 --> L6{6. Nível de risco<br>exige aprovação?}
+    IN[Conteúdo externo<br>emails · documentos · web] --> L3[C3 · Guardrails de entrada<br>marcado como não confiável]
+    L3 --> AG[Agente<br>C1 · identidade própria · menor privilégio<br>C2 · sandbox · saída de rede por lista branca]
+    AG -->|propõe ação| L4[C4 · Guardrails nas tools<br>o código determinístico decide]
+    L4 --> L6{C6 · Nível de risco<br>exige aprovação?}
     L6 -- Sim --> H[Humano vê a ação real<br>em canal separado]
-    L6 -- Não --> L5[5. Guardrails de saída<br>DLP · validação]
+    L6 -- Não --> L5[C5 · Guardrails de saída<br>DLP · validação]
     H --> L5
     L5 --> SYS[Sistemas e exterior]
-    MON[7. Monitorização<br>tracing · anomalias · kill switch] -.-> AG
+    MON[C7 · Monitorização<br>tracing · anomalias · kill switch] -.-> AG
     MON -.-> L4
 ```
 
