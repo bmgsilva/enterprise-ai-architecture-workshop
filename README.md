@@ -10,6 +10,7 @@ Documento de referência vivo sobre arquitetura de sistemas de IA em contexto en
 | 2 | [Arquitetura multi-agente](docs/02-arquitetura-multi-agente.md) | ✅ Concluída |
 | 3 | [Governança e segurança em enterprise](docs/03-governanca-e-seguranca.md) | 🚧 Em curso |
 | 4 | Integração com sistemas existentes (Dynamics, ESB, APIs) | 📝 Planeada |
+| A | [Anexo — Componentes e técnicas (MCP, RAG, embeddings, skills, gateway…)](docs/A-componentes-e-tecnicas.md) | ✅ Concluído |
 
 ## Parte 1 — resumo
 
